@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <app-header></app-header>
+        <app-content>
+        </app-content>
+        <app-footer></app-footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //전역 등록
+        var header = {
+            template: '<h1>Header</h1>'
+        }
+        //지역 등록
+        var local_header = {
+            template: '<h1>Local Header</h1>'
+        }
+
+        //지역 등록
+        var footer = {
+            template: '<template><footer>footer</footer><local-header></local-header></template>',
+            components: {
+                'local-header' : local_header
+            }
+        }
+        
+        //전역 등록
+        var content = {
+            template : '<content> <div>content</div><app-header></app-header></content>'
+        }
+
+        Vue.component('app-header',header);
+
+        Vue.component('app-content',content);
+
+        new Vue({
+            el: '#app',
+            components: {
+                'app-footer' : footer,
+                'local-header': local_header
+            }
+        });
+    </script>
+</body>
+
+</html>
