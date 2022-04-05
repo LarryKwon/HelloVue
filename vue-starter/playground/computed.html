@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .warning {
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <app-content></app-content>
+        <p v-bind:class='isTextWarning'>asdfadfaf</p>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+
+        var appContent = {
+            template: '<div>{{uuid}}</div>',
+            data: function () {
+                return {
+                    num: 10,
+                    uuid: '1234',
+                    name: 'text-blue'
+                }
+            }
+        }
+
+        new Vue({
+            el: '#app',
+            components: {
+                'app-content': appContent
+            },
+            data: {
+                isWarning: true,
+                name: 'Hi!!!'
+            },
+            computed: {
+                doubleNum: function () {
+                    return this.num * 2;
+                },
+                isTextWarning: function(){
+                    return this.isWarning ? 'warning' : null;
+                }
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
